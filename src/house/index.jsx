@@ -4,7 +4,14 @@ import emailIcon from './Email.png';
 import Inquiry from './Inquiry';
 
 class house extends Component {
-    state = {}
+    state = {
+        inquiryShown: false
+    }
+
+    inquiryToggle = () => {
+        this.setState({ inquiryShown: !this.state.inquiryShown })
+    }
+
     render() {
         const house = this.props.house;
         const inquiry = this.state.inquiryShown
