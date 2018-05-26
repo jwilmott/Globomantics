@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import "./house.css";
 import emailIcon from './Email.png';
 import Inquiry from './Inquiry';
+import "./house.css";
+import PropTypes from 'prop-types';
 
-class house extends Component {
-    state = {
-        inquiryShown: false
-    }
+class House extends Component {
+    state = { inquiryShown: false }
 
     inquiryToggle = () => {
         this.setState({ inquiryShown: !this.state.inquiryShown })
@@ -14,20 +13,14 @@ class house extends Component {
 
     render() {
         const house = this.props.house;
-        const inquiry = this.state.inquiryShown
-            ? <Inquiry house= { house } />
-            : null;
+        const inquiry = this.state.inquiryShown ? <Inquiry house={house} /> : null;
         return (
             <div>
                 <div className="row mt-2">
-                    <h5 className="col-md-12">
-                        { house.country }
-                    </h5>
+                    <h5 className="col-md-12">{house.country}</h5>
                 </div>
-                <div className="row mt-2">
-                    <h3 className="col-md-12">
-                        { house.address }
-                    </h3>
+                <div className="row">
+                    <h3 className="col-md-12">{house.address}</h3>
                 </div>
                 <div className="row">
                     <div className="col-md-7">
@@ -36,14 +29,14 @@ class house extends Component {
                     <div className="col-md-5">
                         <p className="price">${house.price}</p>
                         <p>{house.description}</p>
-                        <img src={emailIcon} height="50" alt="inquiry"
-                            onClick={this.inquiryToggle} />
-                            {inquiry}
+                        <img src={emailIcon} height="50" alt="inquiry" onClick={this.inquiryToggle} />
+                        {inquiry}
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }
 
-export default house;
+House.propTypes = {house: PropTypes.object.isRequired}
+export default House;
