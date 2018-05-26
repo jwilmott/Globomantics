@@ -9,7 +9,7 @@ const FeaturedHouse = (props) => {
                     Featured house
                 </h3>
            </div>
-           <House  />
+           <House house={props.house} />
        </div>
     )
     return (
